@@ -6,8 +6,7 @@
   "scripts": {
     "serve": "webpack-dev-server",
     "build": "webpack",
-    "test": "jest",
-    "test-watch": "jest --watch"
+    "test": "jest"
   },
   "dependencies": {
     "babel-cli": "6.24.1",

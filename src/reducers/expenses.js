@@ -17,7 +17,7 @@ export default (state = [], action) => {
                 }
                 return expense
             })
-            default:
+        default:
             return state
     }
 }

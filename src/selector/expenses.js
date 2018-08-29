@@ -10,9 +10,11 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
         return textMatch && startDateMatch && endDateMatch
     }).sort((a, b) => {
         if (sortBy === 'date') {
-            return a.createdAt > b.createdAt ? 1 : -1
+            // Order most recent to oldest
+            return a.createdAt > b.createdAt ? -1 : 1
         } else if (sortBy == 'amount') {
-            return a.amount > b.amount ? 1 : -1
+            // Reverse order, biggest amount first
+            return a.amount > b.amount ? -1 : 1
         }
     })
 }
