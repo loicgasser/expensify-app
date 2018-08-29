@@ -80,6 +80,7 @@ export default class ExpenseForm extends React.Component {
                         focused={this.state.focused}
                         onFocusChange={this.onFocusChange}
                         numberOfMonths={1}
+                        id="singleDatePicker"
                         isOutsideRange={() => false}
                     />
                     <textarea
