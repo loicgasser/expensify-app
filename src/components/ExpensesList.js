@@ -4,16 +4,21 @@ import ExpenseListItem from './ExpenseListItem'
 import ExpenseListFilters from './ExpenseListFilters'
 import getVisibleExpenses from '../selector/expenses'
 
-const ExpensesList = (props) => (
+export const ExpensesList = (props) => (
     <div>
-        <h1>This is a list of expenses:</h1>
         <ExpenseListFilters />
-        {props.expenses.map((expense) => {
-            return <ExpenseListItem
-                key={expense.id}
-                {...expense}
-            />
-        })}
+        {
+            props.expenses.length === 0 ? (
+                <p>No expenses</p>
+            ) : (
+                props.expenses.map((expense) => {
+                    return <ExpenseListItem
+                        key={expense.id}
+                        {...expense}
+                    />
+                })
+            )
+        }
         
     </div>
 )
