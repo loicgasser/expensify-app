@@ -5,16 +5,15 @@ import { Provider } from 'react-redux'
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { addExpense } from './actions/expenses'
-import { setTextFilter } from './actions/filters'
-import getVisibleExpenses from './selector/expenses'
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 import 'react-dates/lib/css/_datepicker.css'
+import moment from 'moment'
 
 const store = configureStore()
 
-store.dispatch(addExpense({ description: 'Gas bill', createdAt: 100 }))
-store.dispatch(addExpense({ description: 'Water bill', amount: 2000 }))
+store.dispatch(addExpense({ description: 'Gas bill', createdAt: moment().valueOf() }))
+store.dispatch(addExpense({ description: 'Water bill', createdAt: moment().valueOf() ,amount: 2000 }))
 
 
 const jsx = (
