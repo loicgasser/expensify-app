@@ -3,6 +3,33 @@
 exports[`should render ExpensesList with expenses 1`] = `
 <div>
   <Connect(ExpenseListFilters) />
+  <Connect(ExpensesSummary)
+    expenses={
+      Array [
+        Object {
+          "amount": 195,
+          "createdAt": 0,
+          "description": "Gum",
+          "id": "1",
+          "note": "",
+        },
+        Object {
+          "amount": 109500,
+          "createdAt": -345600000,
+          "description": "Rent",
+          "id": "2",
+          "note": "",
+        },
+        Object {
+          "amount": 4500,
+          "createdAt": 345600000,
+          "description": "Credit Card",
+          "id": "3",
+          "note": "",
+        },
+      ]
+    }
+  />
   <Connect(ExpenseListItem)
     amount={195}
     createdAt={0}
@@ -33,6 +60,9 @@ exports[`should render ExpensesList with expenses 1`] = `
 exports[`should render ExpensesList with no expenses 1`] = `
 <div>
   <Connect(ExpenseListFilters) />
+  <Connect(ExpensesSummary)
+    expenses={Array []}
+  />
   <p>
     No expenses
   </p>
