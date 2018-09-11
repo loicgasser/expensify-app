@@ -73,7 +73,7 @@ module.exports = (env) => {
                 'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
             })
         ],
-        devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+        devtool: isProduction ? false : 'cheap-module-eval-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public', 'dist'),
             compress: false,
