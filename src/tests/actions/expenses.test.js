@@ -1,12 +1,20 @@
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { addExpense, startAddExpense, removeExpense, editExpense } from '../../actions/expenses'
+import { addExpense, startAddExpense, removeExpense, editExpense, setExpenses, startSetExpenses } from '../../actions/expenses'
 import expenses from '../fixtures/expenses'
 import database from '../../firebase/firebase';
 
 
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares)
+
+beforeEach((done) => {
+    const expensesData = {}
+    expenses.forEach(({ id, description, amount, note, createdAt }) => {
+        expensesData[id] = { description, amount, note, createdAt }
+    })
+    database.ref().set({ expenses: expensesData }).then(() => done())
+})
 
 
 test('Should setup default startAddExpense object', (done) => {
@@ -82,5 +90,25 @@ test('Should setup editExpense object', () => {
             description: 'My dummy desc',
             amount: 1200
         }
+    })
+})
+
+test('Should return setExpenses action with data', () => {
+    const action = setExpenses(expenses)
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
+    })
+})
+
+test('Should fetch data from firebase', (done) => {
+    const store = mockStore({})
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions()
+        expect(actions[0]).toEqual({
+            type: 'SET_EXPENSES',
+            expenses
+        })
+        done()
     })
 })
