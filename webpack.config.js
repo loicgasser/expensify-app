@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
@@ -71,7 +72,10 @@ module.exports = (env) => {
                 'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
                 'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
                 'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
-            })
+            }),
+            new CopyWebpackPlugin([
+                { from: 'public/images',to: 'images' }
+            ])
         ],
         devtool: isProduction ? false : 'cheap-module-eval-source-map',
         devServer: {
