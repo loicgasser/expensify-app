@@ -18,7 +18,7 @@ module.exports = (env) => {
 
     return {
         mode: 'development',
-        entry: './src/app.js',
+        entry: ['babel-polyfill', './src/app.js'],
         watch: isProduction ? false : true,
         watchOptions: {
             poll: true,
