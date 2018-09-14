@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startLogin } from '../actions/auth'
+import { startFacebookLogin, startGoogleLogin } from '../actions/auth'
 
 export class LoginPage extends React.Component {
-    onClick = () => {
-        this.props.startLogin()
+    onClickFacebook = () => {
+        this.props.startFacebookLogin()
+    }
+    onClickGoogle = () => {
+        this.props.startGoogleLogin()
     }
     render() {
         return (
@@ -12,7 +15,11 @@ export class LoginPage extends React.Component {
                 <div className="box-layout__box">
                     <h1 className="box-layout__title">Expensify</h1>
                     <p>It's time to get your expenses under control!</p>
-                    <button className="button" onClick={this.onClick}>Login with Google</button>
+                    <div className="box-layout__buttons">
+                        <button className="button button--facebook" onClick={this.onClickFacebook}>Login with Facebook</button>
+                        <br></br>
+                        <button className="button button--google" onClick={this.onClickGoogle}>Login with Google</button>
+                    </div>
                 </div>
             </div>
         )
@@ -21,7 +28,8 @@ export class LoginPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startLogin: () => dispatch(startLogin())
+        startFacebookLogin: () => dispatch(startFacebookLogin()),
+        startGoogleLogin: () => dispatch(startGoogleLogin())
     }
 }
 
