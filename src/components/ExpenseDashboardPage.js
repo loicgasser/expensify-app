@@ -1,9 +1,12 @@
 import React from 'react'
 import ExpensesList from './ExpensesList'
+import ExpenseListFilters from './ExpenseListFilters'
+import ExpensesSummary from './ExpensesSummary'
 
 const ExpenseDashboardPage = () => (
     <div>
-        <p>This is my dashboard component.</p>
+        <ExpensesSummary />
+        <ExpenseListFilters />
         <ExpensesList />
     </div>
 )

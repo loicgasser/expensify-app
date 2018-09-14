@@ -4,11 +4,15 @@ import { NavLink } from 'react-router-dom'
 import { startLogout } from '../actions/auth'
 
 export const Header = (props) => (
-    <header>
-        <h1>Expensify</h1>
-        <NavLink to="/dashboard" activeClassName="is-active">Dashboard</NavLink>
-        <NavLink to="/create" activeClassName="is-active">Create Expense</NavLink>
-        <button onClick={props.startLogout}>Logout</button>
+    <header className="header">
+        <div className="content-container">
+            <div className="header__content">
+                <NavLink className="header__title" to="/dashboard">
+                    <h1>Expensify</h1>
+                </NavLink>
+                <button className="button button--link" onClick={props.startLogout}>Logout</button>
+            </div>
+        </div>
     </header>
 )
 
